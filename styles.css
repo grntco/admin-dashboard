@@ -11,7 +11,7 @@
 
 .main-container {
     background-image: var(--body-bg-color);
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     display: grid;
     align-items: center;
@@ -109,12 +109,13 @@
 
 .main-content {
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(352px, 1fr));
+    gap: 24px;
+    padding: 24px;
 }
 
 .projects-section {
     grid-row: 1 / 3;
-    padding: 24px;
     display: grid;
     align-content: baseline;
     gap: 16px;
@@ -139,4 +140,45 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 12px;
+}
+
+.main-content-right {
+    display: grid;
+    gap: 24px;
+}
+
+.announcements-section {
+    display: grid;
+    align-content: baseline;
+    gap: 16px;
+}
+
+.announcements-container {
+    padding: 16px;
+    background-color: white;
+    border-radius: 8px;
+    display: grid;
+    gap: 8px;
+}
+
+.announcement {
+    padding-bottom: 8px;
+}
+
+.announcement:nth-child(-n+2) {
+    border-bottom: 1px solid black;
+}
+
+.friends-section {
+    display: grid;
+    align-content: baseline;
+    gap: 16px;
+}
+
+.friend {
+    padding: 16px;
+    background-color: white;
+    border-radius: 8px;
+    display: grid;
+    gap: 4px;
 }
