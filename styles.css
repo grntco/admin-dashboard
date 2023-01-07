@@ -122,11 +122,11 @@ html {
   grid-row: 1 / 2;
   padding: 24px;
   display: grid;
-  grid-template-columns: 1.5fr 1.3rem 1fr;
+  grid-template-columns: 2fr 2.6rem 1fr;
   border-bottom: var(--border);
   align-items: center;
-  /* justify-content: center; */
-  gap: 48px;
+  column-gap: 48px;
+  row-gap: 24px;
   /* grid-template-rows: min-content; */
 }
 
@@ -158,13 +158,35 @@ html {
   /* width: 60%; */
 }
 
+.header-icons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    justify-items: end;
+}
+
+.bell-icon {
+    position: relative;
+    display: grid;
+}
+
+.notification {
+    height: .4rem;
+    width: .4rem;
+    background-color: #f97316;
+    top: 0;
+    right: 0;
+    border-radius: 50%;
+
+}
+
 .profile-container {
   display: grid;
   grid-template-columns: 72px 1fr;
   align-items: center;
   justify-self: end;
   column-gap: 8px;
-  margin-right: 24px;
+  padding-right: 24px;
 }
 
 .profile-container > img {
@@ -176,17 +198,26 @@ html {
 .buttons-container {
     grid-column: 1 / -1;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    /* align-content: space-around; */
+    grid-template-columns: repeat(3, 96px);
+    gap: 24px;
+    justify-content: start;
 }
 
 button {
-    border: var(--border);
+    border: none;
     background: var(--card-bg-image);
-    padding: 16px;
+    padding: 8px 12px;
     border-radius: 8px;
-    font-size: 1.2rem;
+    /* font-size: 1rem; */
+    font-family: "Nunito", sans-serif;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: .05rem;
+}
+
+button:hover {
+    cursor: pointer;
+    /* border: var(--border); */
 }
 
 /* Main Content */
