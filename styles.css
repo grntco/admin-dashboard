@@ -301,9 +301,9 @@ button:hover {
 footer {
   height: 2rem;
   display: grid;
-  grid-template: 1fr;
+  grid-template-columns: 1fr;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
   background-color: var(--font-color);
   color: #fff;
 }
