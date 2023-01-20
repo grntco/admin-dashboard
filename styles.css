@@ -22,9 +22,10 @@
     rgba(255, 255, 255, 0.4),
     rgba(242, 242, 242, 0.4)
   );
-  --dropshadow-small: 4px 2px 12px rgba(110, 110, 110, 0.4);
+  --dropshadow-inset: inset 0px 2px 8px rgba(150, 150, 150, 0.4);
   --dropshadow-big: 8px 4px 12px rgba(130, 130, 130, 0.4);
   --font-color: rgb(55, 55, 55);
+  --accent-color: #f97316; 
 }
 
 body,
@@ -38,7 +39,7 @@ html {
   background-repeat: none;
   background-position: top;
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: grid;
   align-items: center;
   justify-items: center;
@@ -59,12 +60,6 @@ html {
 
 .icon {
   height: 1.3rem;
-}
-
-.sidebar,
-.header,
-.main-content {
-  /* border: 1px solid black; */
 }
 
 /* Sidebar */
@@ -101,15 +96,19 @@ html {
   display: grid;
   grid-template-columns: max-content max-content;
   align-items: center;
-  padding: 2px 4px;
+  padding: 4px 8px;
   border-radius: 4px;
 }
 
-.selected,
-.sb-link:hover {
-  background-image: var(--card-bg-image);
-  /* box-shadow: var(--dropshadow-small); */
-  cursor: pointer;
+.sb-link:hover, .card:hover, .teammate:hover {
+    background-image: var(--card-bg-image);
+    box-shadow: var(--dropshadow-inset);
+    cursor: pointer;
+}
+
+.sb-link.selected {
+    background-image: var(--card-bg-image);
+    cursor: pointer;
 }
 
 .sb-link > .icon {
@@ -122,12 +121,11 @@ html {
   grid-row: 1 / 2;
   padding: 24px;
   display: grid;
-  grid-template-columns: 2fr 2.6rem 1fr;
+  grid-template-columns: 50% repeat(auto-fit, minmax(196px, 1fr));
   border-bottom: var(--border);
   align-items: center;
-  column-gap: 48px;
-  row-gap: 24px;
-  /* grid-template-rows: min-content; */
+  column-gap: 24px;
+  row-gap: 16px;
 }
 
 .header > form {
@@ -138,13 +136,7 @@ html {
   padding: 8px 12px;
   border-radius: 8px;
   background-image: var(--card-bg-image);
-  /* box-shadow: var(--dropshadow-small); */
 }
-
-/* .header > form:focus {
-    box-shadow: var(--dropshadow-small);
-    border: var(--border);
-} */
 
 .search-bar {
   background: none;
@@ -155,14 +147,17 @@ html {
   font-family: "Nunito", sans-serif;
   color: var(--font-color);
   font-size: 1rem;
-  /* width: 60%; */
 }
 
-.header-icons {
+.header > form:hover {
+  box-shadow: var(--dropshadow-inset);
+}
+
+.header-icons-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: min-content min-content;
+    justify-self: end;
     gap: 16px;
-    justify-items: end;
 }
 
 .bell-icon {
@@ -170,29 +165,28 @@ html {
     display: grid;
 }
 
-.notification {
-    height: .4rem;
-    width: .4rem;
-    background-color: #f97316;
-    top: 0;
-    right: 0;
-    border-radius: 50%;
-
-}
-
 .profile-container {
   display: grid;
   grid-template-columns: 72px 1fr;
   align-items: center;
-  justify-self: end;
+  /* justify-self: end; */
   column-gap: 8px;
-  padding-right: 24px;
+  /* padding-right: 24px; */
 }
 
 .profile-container > img {
   grid-row: 1 / 4;
   height: 72px;
   border-radius: 50%;
+}
+
+.user-handle a {
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+.user-handle a:hover {
+    text-decoration: underline;
 }
 
 .buttons-container {
@@ -217,7 +211,7 @@ button {
 
 button:hover {
     cursor: pointer;
-    /* border: var(--border); */
+    box-shadow: var(--dropshadow-inset);
 }
 
 /* Main Content */
@@ -236,7 +230,7 @@ button:hover {
   padding: 16px;
   background-image: var(--card-bg-image);
   border-radius: 8px;
-  /* box-shadow: var(--dropshadow-small); */
+  /* box-shadow: var(--dropshadow-inset); */
 }
 
 .projects-section {
@@ -285,7 +279,7 @@ button:hover {
 }
 
 .announcement:nth-child(-n + 2) {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgba(55, 55, 55, .3);
 }
 
 .team-section {
@@ -313,4 +307,45 @@ button:hover {
 
 .teammate-handle {
   align-self: start;
+}
+
+footer {
+  height: 2rem;
+  display: grid;
+  grid-template: 1fr;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--font-color);
+  color: #fff;
+}
+
+@media screen and (max-width: 879px) {
+  .dashboard {
+    /* display: grid; */
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    grid-row: 1 / 2;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .sidebar {
+    grid-row: 2 / 3; 
+    justify-content: start;
+    grid-template-columns: 1fr 1fr;
+    border-right: none;
+  }
+
+  .logo-container {
+    grid-column: 1 / 3;
+  }
+
+  .sb-links-container {
+    align-content: start;
+  }
+
+ .main-content, .cards-container {
+    grid-template-columns: 1fr;
+  }
 }
